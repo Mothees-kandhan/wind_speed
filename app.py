@@ -1,11 +1,10 @@
 from flask import Flask, request, render_template, jsonify
-import pickle
+import joblib
 import pandas as pd
 
 app = Flask(__name__)
 
-with open('wind_speed_rfr.pkl', 'rb') as file:
-    rfr = pickle.load(file)
+rfr = joblib.load('wind_speed_rfr.pkl')
 
 @app.route('/')
 def home():
@@ -34,3 +33,6 @@ def predict():
 
     except Exception as e:
         return jsonify({'error': str(e)})
+
+if __name__ == '__main__':
+    app.run(debug=True)
