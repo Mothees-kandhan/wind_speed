@@ -2,3 +2,4 @@ flask
 pickle
 pandas
 gunicorn
+scikit-learn  
