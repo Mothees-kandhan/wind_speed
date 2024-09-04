@@ -28,7 +28,7 @@ def predict():
         df = pd.DataFrame([input_data])
 
         prediction = rfr.predict(df)[0]
-
+        prediction=round(prediction, 3)
         return jsonify({'prediction': prediction})
 
     except Exception as e:
