@@ -64,29 +64,29 @@
     <h1>Wind Speed Prediction</h1>
 
     <form id="predictionForm">
-        <label for="IND">Indicator:</label>
-        <input type="number" id="IND" name="IND" required>
+        <label for="IND">First indicator value</label>
+        <input type="number" id="IND" name="IND" step="any" required>
 
-        <label for="RAIN">Rainfall:</label>
-        <input type="number" id="RAIN" name="RAIN" required>
+        <label for="RAIN">RAIN: Precipitation Amount (mm)</label>
+        <input type="number" id="RAIN" name="RAIN" step="any" required>
 
-        <label for="IND1">Indicator 1:</label>
-        <input type="number" id="IND1" name="IND1" required>
+        <label for="IND1">Second indicator value</label>
+        <input type="number" id="IND1" name="IND1" step="any" required>
 
-        <label for="TMAX">Maximum Temperature:</label>
-        <input type="number" id="TMAX" name="TMAX" required>
+        <label for="TMAX"> Maximum Temperature (°C)</label>
+        <input type="number" id="TMAX" name="TMAX" step="any" required>
 
-        <label for="IND2">Indicator 2:</label>
-        <input type="number" id="IND2" name="IND2" required>
+        <label for="IND2"> Third indicator value</label>
+        <input type="number" id="IND2" name="IND2" step="any" required>
 
-        <label for="TMIN">Minimum Temperature:</label>
-        <input type="number" id="TMIN" name="TMIN" required>
+        <label for="TMIN">Minimum Temperature (°C)</label>
+        <input type="number" id="TMIN" name="TMIN" step="any" required>
 
-        <label for="TMIN_G">Minimum Temperature Gradient:</label>
-        <input type="number" id="TMIN_G" name="TMIN_G" required>
+        <label for="TMIN_G">Grass Minimum Temperature (°C)</label>
+        <input type="number" id="TMIN_G" name="TMIN_G" step="any" required>
 
         <label for="MONTH">Month:</label>
-        <input type="number" id="MONTH" name="MONTH" required min="1" max="12">
+        <input type="number" id="MONTH" name="MONTH" required min="1" max="12" step="1">
 
         <button type="submit">Predict</button>
     </form>
@@ -113,9 +113,9 @@
             const formData = new FormData(event.target);
             const data = {};
 
-            // Convert form data to JSON
+            // Convert form data to JSON with float values
             formData.forEach((value, key) => {
-                data[key] = Number(value);
+                data[key] = parseFloat(value);
             });
 
             // Make API request to the Flask backend
